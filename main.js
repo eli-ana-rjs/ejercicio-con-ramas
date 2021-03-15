@@ -32,3 +32,32 @@ texto.addEventListener('keyup', () => {
     }
     pintarLista(result); 
 }); 
+
+//gastos
+
+const moneda = document.getElementById('moneda');
+const agregar = document.getElementById('agregar');
+const gastos = document.getElementById('gastos');
+const total = document.getElementById('total');
+
+let arreglo = [];
+
+const pintarArreglo = arr =>
+{
+    for (let index = 0; index < arr.length; index++) {
+        let cajita = '';
+        let totalMoneda = 0;
+        console.log(arr[index]);
+        cajita += `<li>${arr[index]}</li>` ;
+        totalMoneda += parseInt(arr[index]);
+    }
+    gastos.innerHTML = cajita;
+    total.innerHTML = `El total de los gastos es de :$ ${totalMoneda}`;
+    moneda.value = '';
+}
+
+agregar.addEventListener('click' , () => {
+    console.log(moneda.value);
+    arreglo.push(moneda.value);
+    pintarArreglo(arreglo);
+});
